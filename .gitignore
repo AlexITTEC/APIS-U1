@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+.env
+package-lock.json
+
+# Firebase service account key (credencial privada)
+config/serviceAccountkey.json
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
