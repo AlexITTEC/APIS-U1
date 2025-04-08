@@ -7,9 +7,11 @@ app.use(express.json());
 // Rutas
 const alumnosRoutes = require("./routes/alumnos");
 const materiasRoutes = require("./routes/materiasRoutes");
+const calificaciones = require("./routes/calificaciones");
 
 app.use("/alumnos", alumnosRoutes);
 app.use("/materias", materiasRoutes);
+app.use("/calificaciones", calificaciones);
 
 // Middleware para rutas no encontradas
 app.use((req, res) => {
