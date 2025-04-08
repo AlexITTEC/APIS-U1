@@ -1,6 +1,15 @@
 // firebase.js
 const admin = require("firebase-admin");
-const serviceAccount = require("./config/serviceAccountkey.json"); // Asegúrate de que esta ruta sea correcta
+
+let serviceAccount;
+
+if (process.env.FIREBASE_CONFIG_JSON) {
+  // 🔐 En producción (Render): usar variable de entorno
+  serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON);
+} else {
+  // 🧪 En desarrollo local: usar archivo físico
+  serviceAccount = require("./config/serviceAccountKey.json");
+}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -8,3 +17,4 @@ admin.initializeApp({
 
 const db = admin.firestore();
 module.exports = db;
+
